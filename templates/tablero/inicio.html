@@ -12,6 +12,10 @@
         h1 {
             color: #333;
         }
+        .tablero {
+            display: flex;
+            gap: 15px;
+        }
         .columna {
             border: 1px solid #ccc;
             background-color: white;
@@ -24,23 +28,45 @@
             padding: 5px;
             margin: 5px 0;
         }
+        .indicador {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        .indicador.con-tareas {
+            background-color: #4caf50;
+        }
+        .indicador.vacia {
+            background-color: #bbb;
+        }
     </style>
 </head>
 <body>
     <h1>{{ nombre_proyecto }}</h1>
     <p>{{ estado }} - Total de tareas: {{ total }}</p>
 
-    {% for columna in columnas %}
-    <div class="columna">
-        <h3>{{ columna.titulo }} ({{ columna.cantidad }})</h3>
-        {% if columna.cantidad == 0 %}
-            <p><em>{{ columna.mensaje }}</em></p>
-        {% else %}
-            {% for tarea in columna.tareas %}
-                <div class="tarea">{{ tarea }}</div>
-            {% endfor %}
-        {% endif %}
+    <div class="tablero">
+        {% for columna in columnas %}
+        <div class="columna">
+            <h3>
+                {% if columna.cantidad == 0 %}
+                    <span class="indicador vacia"></span>
+                {% else %}
+                    <span class="indicador con-tareas"></span>
+                {% endif %}
+                {{ columna.titulo }} ({{ columna.cantidad }})
+            </h3>
+            {% if columna.cantidad == 0 %}
+                <p><em>{{ columna.mensaje }}</em></p>
+            {% else %}
+                {% for tarea in columna.tareas %}
+                    <div class="tarea">{{ tarea }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </body>
 </html>
