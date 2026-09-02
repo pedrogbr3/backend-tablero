@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ nombre_proyecto }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+        }
+        h1 {
+            color: #333;
+        }
+        .columna {
+            border: 1px solid #ccc;
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 300px;
+        }
+        .tarea {
+            background-color: #e6e6e6;
+            padding: 5px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ nombre_proyecto }}</h1>
+    <p>{{ estado }} - Total de tareas: {{ total }}</p>
+
+    {% for columna in columnas %}
+    <div class="columna">
+        <h3>{{ columna.titulo }} ({{ columna.cantidad }})</h3>
+        {% if columna.cantidad == 0 %}
+            <p><em>{{ columna.mensaje }}</em></p>
+        {% else %}
+            {% for tarea in columna.tareas %}
+                <div class="tarea">{{ tarea }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>
