@@ -3,10 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <title>Pagina no encontrada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Arial&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: radial-gradient(ellipse at 50% 20%, #3a1f0f 0%, #1a0d08 55%, #0a0503 100%);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .escena {
+            max-width: 900px;
+            margin: 0 auto;
+            display: block;
+        }
+        h1.titulo {
+            font-family: "Bangers", Arial, sans-serif;
+            font-size: 3rem;
+            letter-spacing: .05em;
+            color: #ffcc33;
+            text-shadow: 3px 3px 0 #b3231a, -2px -2px 0 #b3231a, 2px -2px 0 #b3231a, -2px 2px 0 #b3231a;
+            margin: 1rem 0 .3rem;
+        }
+        p.msg {
+            font-size: 1.05rem;
+            color: #f2e4d8;
+            margin: 0 0 1.5rem;
+        }
+        a.volver {
+            display: inline-block;
+            font-family: "Bangers", Arial, sans-serif;
+            letter-spacing: .04em;
+            font-size: 1.2rem;
+            color: #1a0d08;
+            background: #ffcc33;
+            padding: .6rem 1.4rem;
+            border-radius: 6px;
+            text-decoration: none;
+            border: 3px solid #b3231a;
+            margin-bottom: 2.5rem;
+        }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 80px;">
-    <h1>Error 404</h1>
-    <p>Esa pagina no existe en este proyecto.</p>
-    <a href="/">Volver al inicio</a>
+<body>
+
+    <svg class="escena" viewBox="0 0 1000 460" role="img"
+         aria-label="Escena divertida: un tiranosaurio rex se come el numero 404 mientras explotan bombas de fondo, un jugador de futbol celebra al lado, y un sello dice INACAP">
+        <defs>
+            <radialGradient id="boom" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fff4b0"/>
+                <stop offset="45%" stop-color="#ff9a2e"/>
+                <stop offset="100%" stop-color="#ff9a2e" stop-opacity="0"/>
+            </radialGradient>
+        </defs>
+
+        <!-- suelo -->
+        <rect x="0" y="400" width="1000" height="60" fill="#1a0d08"/>
+        <rect x="0" y="396" width="1000" height="6" fill="#3a1f0f"/>
+
+        <!-- explosiones de fondo -->
+        <g opacity="0.9">
+            <circle cx="120" cy="110" r="70" fill="url(#boom)"/>
+            <polygon fill="#ff5b1f" transform="translate(120,110) rotate(12)"
+                points="0,-55 14,-16 55,-14 20,10 33,50 0,26 -33,50 -20,10 -55,-14 -14,-16"/>
+        </g>
+        <g opacity="0.85">
+            <circle cx="740" cy="90" r="85" fill="url(#boom)"/>
+            <polygon fill="#ff3b1f" transform="translate(740,90) rotate(-18)"
+                points="0,-65 16,-20 65,-16 24,12 40,60 0,32 -40,60 -24,12 -65,-16 -16,-20"/>
+        </g>
+        <g opacity="0.8">
+            <circle cx="820" cy="260" r="60" fill="url(#boom)"/>
+            <polygon fill="#ff9a2e" transform="translate(820,260) rotate(30)"
+                points="0,-45 12,-13 45,-11 17,8 28,42 0,22 -28,42 -17,8 -45,-11 -12,-13"/>
+        </g>
+        <g opacity="0.7">
+            <circle cx="60" cy="300" r="50" fill="url(#boom)"/>
+            <polygon fill="#ff5b1f" transform="translate(60,300) rotate(-8)"
+                points="0,-38 10,-11 38,-9 14,7 24,35 0,18 -24,35 -14,7 -38,-9 -10,-11"/>
+        </g>
+
+        <!-- sello INACAP -->
+        <g transform="translate(70,55) rotate(-8)">
+            <rect x="-75" y="-24" width="150" height="46" rx="6" fill="#c8102e" stroke="#fff" stroke-width="3"/>
+            <text x="0" y="8" font-family="Bangers" font-size="26" fill="#fff" text-anchor="middle">INACAP</text>
+        </g>
+
+        <!-- numero 404 gigante -->
+        <text x="90" y="330" font-family="Bangers" font-size="190" fill="#ffcc33"
+              stroke="#7a1a10" stroke-width="6" paint-order="stroke">404</text>
+
+        <!-- tiranosaurio comiendose el ultimo 4 -->
+        <g transform="translate(430,150) scale(1.25)">
+            <!-- cola -->
+            <path d="M10,150 Q-45,120 -80,145 Q-42,168 20,168 Z" fill="#3f8f3f"/>
+            <!-- pata trasera -->
+            <rect x="55" y="185" width="26" height="55" rx="10" fill="#2f6f2f"/>
+            <rect x="100" y="185" width="26" height="55" rx="10" fill="#2f6f2f"/>
+            <ellipse cx="68" cy="242" rx="16" ry="7" fill="#1f4f1f"/>
+            <ellipse cx="113" cy="242" rx="16" ry="7" fill="#1f4f1f"/>
+            <!-- cuerpo -->
+            <ellipse cx="90" cy="150" rx="90" ry="58" fill="#3f8f3f"/>
+            <ellipse cx="85" cy="170" rx="62" ry="30" fill="#6fbf6f"/>
+            <!-- brazo chico -->
+            <ellipse cx="150" cy="150" rx="18" ry="9" fill="#3f8f3f" transform="rotate(20 150 150)"/>
+            <!-- cabeza -->
+            <ellipse cx="185" cy="105" rx="42" ry="38" fill="#3f8f3f"/>
+            <!-- mandibula de arriba -->
+            <polygon points="205,95 300,72 268,108" fill="#3f8f3f"/>
+            <polygon points="220,98 265,100 240,110" fill="#ffffff"/>
+            <!-- mandibula de abajo, mas abierta para que se vea que muerde el 404 -->
+            <polygon points="205,120 310,150 250,168 210,140" fill="#2f6f2f"/>
+            <polygon points="220,132 255,142 232,150" fill="#ffffff"/>
+            <polygon points="245,140 275,148 255,156" fill="#ffffff"/>
+            <!-- ojo -->
+            <circle cx="195" cy="88" r="7" fill="#fff"/>
+            <circle cx="197" cy="88" r="3.2" fill="#111"/>
+        </g>
+
+        <!-- pedacitos "mordidos" volando -->
+        <g fill="#ffcc33" stroke="#7a1a10" stroke-width="2">
+            <polygon points="745,195 763,183 755,211"/>
+            <polygon points="770,225 784,213 780,237"/>
+        </g>
+        <text x="735" y="110" font-family="Bangers" font-size="26" fill="#fff"
+              stroke="#7a1a10" stroke-width="2" paint-order="stroke" transform="rotate(-8 735 110)">CRUNCH!</text>
+
+        <!-- jugador de futbol celebrando -->
+        <g transform="translate(860,300)">
+            <!-- globo de dialogo -->
+            <g transform="translate(-10,-140)">
+                <rect x="-58" y="-24" width="116" height="40" rx="14" fill="#fff"/>
+                <polygon points="-6,16 10,16 -2,34" fill="#fff"/>
+                <text x="0" y="2" font-family="Bangers" font-size="20" fill="#c8102e" text-anchor="middle">SIUUU!</text>
+            </g>
+            <!-- brazos arriba -->
+            <line x1="0" y1="-55" x2="-38" y2="-95" stroke="#e8b98d" stroke-width="10" stroke-linecap="round"/>
+            <line x1="0" y1="-55" x2="38" y2="-95" stroke="#e8b98d" stroke-width="10" stroke-linecap="round"/>
+            <!-- cabeza -->
+            <circle cx="0" cy="-80" r="22" fill="#e8b98d"/>
+            <path d="M-20,-90 Q0,-108 20,-90 Q18,-98 0,-100 Q-18,-98 -20,-90 Z" fill="#2b2119"/>
+            <!-- camiseta -->
+            <path d="M-24,-58 Q0,-70 24,-58 L30,10 L-30,10 Z" fill="#c8102e" stroke="#111" stroke-width="2"/>
+            <text x="0" y="-15" font-family="Bangers" font-size="26" fill="#fff" text-anchor="middle">7</text>
+            <!-- shorts -->
+            <rect x="-26" y="10" width="52" height="24" rx="6" fill="#111"/>
+            <!-- piernas, una pateando -->
+            <line x1="-14" y1="34" x2="-20" y2="80" stroke="#e8b98d" stroke-width="11" stroke-linecap="round"/>
+            <line x1="14" y1="34" x2="48" y2="55" stroke="#e8b98d" stroke-width="11" stroke-linecap="round"/>
+            <ellipse cx="-22" cy="86" rx="10" ry="6" fill="#111"/>
+            <ellipse cx="54" cy="58" rx="10" ry="6" fill="#111"/>
+            <!-- pelota -->
+            <circle cx="90" cy="60" r="14" fill="#fff" stroke="#111" stroke-width="2"/>
+            <polygon points="90,52 96,58 93,66 87,66 84,58" fill="#111"/>
+        </g>
+    </svg>
+
+    <h1 class="titulo">¡EL T-REX SE COMIÓ LA PÁGINA!</h1>
+    <p class="msg">La ruta que buscabas no existe en este proyecto. Mientras tanto, hubo una explosión, un T-Rex se comió el 404 y alguien anotó un gol al lado.</p>
+    <a class="volver" href="/">Volver al inicio</a>
+
 </body>
 </html>
