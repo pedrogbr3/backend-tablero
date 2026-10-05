@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from rest_framework import viewsets
+
+from .models import Tablero, Columna, Tarea
+from .serializers import TableroSerializer, ColumnaSerializer, TareaSerializer
 
 
 def inicio(request):
@@ -35,3 +39,22 @@ def inicio(request):
         "estado": estado,
     }
     return render(request, "tablero/inicio.html", contexto)
+
+
+# a partir de aca, lo nuevo de la Evaluacion 2: un ModelViewSet por cada
+# modelo, para tener el CRUD completo (GET, POST, PUT, PATCH, DELETE) sin
+# tener que escribir cada vista a mano
+
+class TableroViewSet(viewsets.ModelViewSet):
+    queryset = Tablero.objects.all()
+    serializer_class = TableroSerializer
+
+
+class ColumnaViewSet(viewsets.ModelViewSet):
+    queryset = Columna.objects.all()
+    serializer_class = ColumnaSerializer
+
+
+class TareaViewSet(viewsets.ModelViewSet):
+    queryset = Tarea.objects.all()
+    serializer_class = TareaSerializer
