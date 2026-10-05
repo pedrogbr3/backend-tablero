@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Tablero, Columna, Tarea
+
+admin.site.register(Tablero)
+admin.site.register(Columna)
+admin.site.register(Tarea)
