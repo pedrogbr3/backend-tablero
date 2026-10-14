@@ -4,7 +4,7 @@ Proyecto desarrollado para el ramo de Programacion Backend. El tema asignado cor
 "Gestion de Proyectos tipo Trello", por lo que la aplicacion representa un tablero con columnas
 y tareas.
 
-El proyecto se desarrollo en dos etapas:
+El proyecto se desarrollo en tres etapas:
 
 - **Evaluacion 1**: estructura inicial del proyecto Django, con una vista de bienvenida y una
   pagina de error 404 personalizada. En esa etapa no existia modelo de datos ni persistencia.
@@ -79,11 +79,18 @@ pagina de error 404 personalizada del proyecto.
 
 ## Base de datos
 
-El script `sql/crear_bd_usuario_permisos.sql` contiene las instrucciones para crear la base de
-datos, el usuario de la aplicacion y sus permisos. Por seguridad, ese script (que se sube al
-repositorio) usa un **valor de ejemplo** en vez de una contraseña real.
+Los scripts para crear la base de datos quedan separados en tres archivos, cada uno con un
+paso:
 
-Para uso local con Docker, existe una copia de ese mismo script con la contraseña real en
+- `sql/01_crear_base_datos.sql`: crea la base de datos.
+- `sql/02_crear_usuario.sql`: crea el usuario que usa la aplicacion (no el root).
+- `sql/03_asignar_permisos.sql`: le da permisos solo sobre esta base de datos, no sobre todo
+  el servidor.
+
+Por seguridad, el script de creacion de usuario (que se sube al repositorio) usa un **valor de
+ejemplo** en vez de una contraseña real.
+
+Para uso local con Docker, existe una copia con los tres pasos juntos y la contraseña real en
 `sql/local/init.sql`. Ese archivo **no se sube al repositorio** (esta en `.gitignore`), y es el
 que Docker Compose monta y ejecuta automaticamente al crear el contenedor por primera vez.
 
