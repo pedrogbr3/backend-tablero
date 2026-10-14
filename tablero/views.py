@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 from rest_framework import viewsets
 
 from .models import Tablero, Columna, Tarea
@@ -58,3 +61,28 @@ class ColumnaViewSet(viewsets.ModelViewSet):
 class TareaViewSet(viewsets.ModelViewSet):
     queryset = Tarea.objects.all()
     serializer_class = TareaSerializer
+
+
+# a partir de aca, lo nuevo de la Evaluacion 3: autenticacion y vistas
+# protegidas, una basada en funcion y otra basada en clase.
+
+@login_required
+def panel_funcion(request):
+    contexto = {
+        "cantidad_tableros": Tablero.objects.count(),
+        "cantidad_columnas": Columna.objects.count(),
+        "cantidad_tareas": Tarea.objects.count(),
+    }
+    return render(request, "tablero/panel_funcion.html", contexto)
+
+
+class PanelClaseView(LoginRequiredMixin, TemplateView):
+    template_name = "tablero/panel_clase.html"
+    # si no esta logueado, LoginRequiredMixin lo manda solo a LOGIN_URL
+
+    def get_context_data(self, **kwargs):
+        contexto = super().get_context_data(**kwargs)
+        contexto["cantidad_tableros"] = Tablero.objects.count()
+        contexto["cantidad_columnas"] = Columna.objects.count()
+        contexto["cantidad_tareas"] = Tarea.objects.count()
+        return contexto
