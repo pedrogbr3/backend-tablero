@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel (vista por funcion)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+        }
+        .caja {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 15px;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <a href="{% url 'panel-clase' %}">Ir al panel basado en clase</a> |
+        <form method="post" action="{% url 'logout' %}" style="display:inline">
+            {% csrf_token %}
+            <button type="submit">Cerrar sesion</button>
+        </form>
+    </p>
+
+    <h1>Panel protegido - vista basada en funcion</h1>
+    <div class="caja">
+        <p>Hola, <strong>{{ user.username }}</strong>. Esta pagina solo se puede ver si iniciaste sesion
+        (protegida con el decorador <code>@login_required</code>).</p>
+        <ul>
+            <li>Tableros creados: {{ cantidad_tableros }}</li>
+            <li>Columnas creadas: {{ cantidad_columnas }}</li>
+            <li>Tareas creadas: {{ cantidad_tareas }}</li>
+        </ul>
+    </div>
+</body>
+</html>
