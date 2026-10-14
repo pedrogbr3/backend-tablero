@@ -8,9 +8,12 @@ El proyecto se desarrollo en dos etapas:
 
 - **Evaluacion 1**: estructura inicial del proyecto Django, con una vista de bienvenida y una
   pagina de error 404 personalizada. En esa etapa no existia modelo de datos ni persistencia.
-- **Evaluacion 2** (etapa actual): se incorporo el modelo de datos (`Tablero`, `Columna`,
-  `Tarea`), persistencia en MySQL, y una API REST completa con Django REST Framework
-  (serializadores, `ModelViewSet` y rutas mediante `Router`), con operaciones CRUD completas.
+- **Evaluacion 2**: se incorporo el modelo de datos (`Tablero`, `Columna`, `Tarea`), persistencia
+  en MySQL, y una API REST completa con Django REST Framework (serializadores, `ModelViewSet` y
+  rutas mediante `Router`), con operaciones CRUD completas.
+- **Evaluacion 3** (etapa actual): se agrego autenticacion (login y logout con las vistas de
+  Django), una vista protegida basada en funcion (`@login_required`) y otra basada en clase
+  (`LoginRequiredMixin`), con control de acceso entre vistas publicas y privadas.
 
 La vista de bienvenida de la Evaluacion 1 se mantiene sin cambios, mostrando datos de ejemplo
 fijos en el codigo. Los datos reales del tablero ahora se manejan a traves de la API.
@@ -101,6 +104,16 @@ REST Framework, y soportan el CRUD completo (`GET`, `POST`, `PUT`, `PATCH`, `DEL
 - `/api/tareas/`
 
 Cada uno tiene tambien su version de detalle (`/api/tareas/1/`, por ejemplo).
+
+## Autenticacion y vistas protegidas
+
+- `/login/`: formulario de inicio de sesion (vista de Django, con template propio).
+- `/logout/`: cierra la sesion (solo por POST, con un boton, no con un link).
+- `/panel/`: vista protegida basada en funcion (`@login_required`). Sin sesion, redirige a
+  `/login/?next=/panel/`.
+- `/panel-clase/`: la misma idea, pero como vista basada en clase (`LoginRequiredMixin`).
+
+La vista de bienvenida (`/`) sigue siendo publica, sin necesidad de iniciar sesion.
 
 ## Estructura del proyecto
 
