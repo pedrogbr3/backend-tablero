@@ -127,6 +127,14 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
+# Autenticacion (Evaluacion 3)
+# https://docs.djangoproject.com/en/6.1/topics/auth/default/
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'panel-funcion'
+LOGOUT_REDIRECT_URL = 'inicio'
+
+
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
