@@ -1,55 +1,60 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Iniciar sesion</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f2f2f2;
-        }
-        form {
-            background-color: white;
-            border: 1px solid #ccc;
-            padding: 15px;
-            width: 280px;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input {
-            width: 100%;
-            padding: 5px;
-            box-sizing: border-box;
-        }
-        button {
-            margin-top: 15px;
-            padding: 6px 12px;
-        }
-        .error {
-            color: #b00020;
-        }
-    </style>
-</head>
-<body>
-    <p><a href="{% url 'inicio' %}">Volver al inicio</a></p>
-    <h1>Iniciar sesion</h1>
+{% extends "tablero/base.html" %}
 
-    {% if form.errors %}
-        <p class="error">Usuario o contraseña incorrectos.</p>
-    {% endif %}
+{% block titulo %}Iniciar sesion{% endblock %}
 
-    <form method="post">
-        {% csrf_token %}
-        <label for="id_username">Usuario</label>
-        <input type="text" name="username" id="id_username">
+{% block estilos %}
+    .login-wrap {
+        display: flex;
+        justify-content: center;
+        padding-top: 40px;
+    }
+    .login-wrap form {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        width: 300px;
+    }
+    .login-wrap label {
+        display: block;
+        margin-top: 12px;
+        font-size: 0.9em;
+        color: #555;
+    }
+    .login-wrap input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 4px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .error {
+        color: #b00020;
+        background-color: #fdeceb;
+        padding: 8px 10px;
+        border-radius: 4px;
+        font-size: 0.9em;
+    }
+{% endblock %}
 
-        <label for="id_password">Contraseña</label>
-        <input type="password" name="password" id="id_password">
+{% block content %}
+    <div class="login-wrap">
+        <form method="post">
+            {% csrf_token %}
+            <h1 style="font-size: 1.3em;">Iniciar sesion</h1>
 
-        <button type="submit">Entrar</button>
-    </form>
-</body>
-</html>
+            {% if form.errors %}
+                <p class="error">Usuario o contraseña incorrectos.</p>
+            {% endif %}
+
+            <label for="id_username">Usuario</label>
+            <input type="text" name="username" id="id_username">
+
+            <label for="id_password">Contraseña</label>
+            <input type="password" name="password" id="id_password">
+
+            <button class="boton" type="submit" style="margin-top: 18px; width: 100%;">Entrar</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,31 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Panel (vista por clase)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f2f2f2;
-        }
-        .caja {
-            background-color: white;
-            border: 1px solid #ccc;
-            padding: 15px;
-            max-width: 400px;
-        }
-    </style>
-</head>
-<body>
-    <p>
-        <a href="{% url 'panel-funcion' %}">Ir al panel basado en funcion</a> |
-        <form method="post" action="{% url 'logout' %}" style="display:inline">
-            {% csrf_token %}
-            <button type="submit">Cerrar sesion</button>
-        </form>
-    </p>
+{% extends "tablero/base.html" %}
 
+{% block titulo %}Panel (vista por clase){% endblock %}
+
+{% block estilos %}
+    .caja {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        padding: 18px;
+        max-width: 400px;
+    }
+    .caja ul {
+        padding-left: 18px;
+        margin-bottom: 0;
+    }
+{% endblock %}
+
+{% block content %}
     <h1>Panel protegido - vista basada en clase</h1>
     <div class="caja">
         <p>Hola, <strong>{{ user.username }}</strong>. Esta pagina solo se puede ver si iniciaste sesion
@@ -36,5 +28,5 @@
             <li>Tareas creadas: {{ cantidad_tareas }}</li>
         </ul>
     </div>
-</body>
-</html>
+    <p style="margin-top: 15px;"><a href="{% url 'panel-funcion' %}">Ir al panel basado en funcion</a></p>
+{% endblock %}

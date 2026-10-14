@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Tablero de Tareas{% endblock %}</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f2f2f2;
+            color: #222;
+        }
+        .navbar {
+            background-color: #2c5f8a;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .marca {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: white;
+            text-decoration: none;
+        }
+        .navbar .acciones {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .navbar button {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .navbar button:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        .contenido {
+            padding: 20px;
+        }
+        h1 {
+            color: #222;
+            margin-top: 0;
+        }
+        .boton {
+            display: inline-block;
+            background-color: #2c5f8a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+        .boton:hover {
+            background-color: #234b6e;
+        }
+        {% block estilos %}{% endblock %}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a class="marca" href="{% url 'inicio' %}">Tablero de Tareas</a>
+        <div class="acciones">
+            {% if user.is_authenticated %}
+                <a href="{% url 'panel-funcion' %}">Panel (funcion)</a>
+                <a href="{% url 'panel-clase' %}">Panel (clase)</a>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar sesion</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesion</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="contenido">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
